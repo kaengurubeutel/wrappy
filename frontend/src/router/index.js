@@ -8,7 +8,7 @@ import {
 const routes = [{
         path: "/",
         name: 'Landingpage',
-        component: () => import('../views/landingpage.vue')
+        component: () => import('../views/Landingpage.vue')
     },
     {
         path: "/insights",
@@ -18,12 +18,12 @@ const routes = [{
     {
         path: "/callback",
         name: 'Callback',
-        component: () => import('../views/callback.vue')
+        component: () => import('../views/Callback.vue')
     },
     {
         path: "/about",
         name: 'About',
-        component: () => import('../views/about.vue')
+        component: () => import('../views/About.vue')
     },
 
 ]

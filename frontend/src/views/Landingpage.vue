@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>hallo</h1>
+    <h1>Let's find out what your favourite music is</h1>
+    <button>sign in</button>
   </div>
 </template>
 
