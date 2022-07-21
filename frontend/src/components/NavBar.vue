@@ -1,18 +1,18 @@
 
 <script>
 
-import { navbarstate } from '../states/navbarstate'
+import { states } from '../states/state'
 
 
 export default {
   data() {
     return {
-      navbarstate
+      states
     }
   },
   methods:{
     isSet() {
-     navbarstate.burgerIsActivated = !navbarstate.burgerIsActivated;
+     states.burgerIsActivated = !states.burgerIsActivated;
     }
   }
 }
