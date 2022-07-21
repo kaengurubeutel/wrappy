@@ -13,7 +13,6 @@ export default {
   methods:{
     isSet() {
      isActivated = !isActivated;
-     console.log(isActivated)
     }
   }
 }
@@ -100,7 +99,6 @@ export default {
 
 
 .hamburger input[type="checkbox"]:checked ~ .line1 {
-  /*transform: rotate(45deg);*/
   transform: translateY(5px);
 }
 
@@ -109,7 +107,6 @@ export default {
 }
 
 .hamburger input[type="checkbox"]:checked ~ .line3 {
-  /*transform: rotate(-45deg);*/
   transform: translateY(-5px);
 }
 
