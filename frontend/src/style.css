@@ -3,7 +3,7 @@
   font-size: 26.66px;
   line-height: auto;
   font-weight: 300;
-
+  
   color-scheme: light dark;
   color: #1E1E1E;
   background-color: #EABF6C;
@@ -19,6 +19,7 @@
 
 body {
   margin: 0;
+ 
 }
 
 h1 {

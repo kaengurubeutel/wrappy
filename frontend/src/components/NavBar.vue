@@ -1,18 +1,18 @@
 
 <script>
 
-let isActivated = false;
+import { navbarstate } from '../states/navbarstate'
+
 
 export default {
-  
   data() {
     return {
-      isActivated
+      navbarstate
     }
   },
   methods:{
     isSet() {
-     isActivated = !isActivated;
+     navbarstate.burgerIsActivated = !navbarstate.burgerIsActivated;
     }
   }
 }
