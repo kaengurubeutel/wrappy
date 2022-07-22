@@ -42,13 +42,16 @@ export default {
   margin: 0;
 }
 .container{
+  background-color: #EABF6C;
+  position:sticky;
   width: 95%;
   margin: auto;
   margin-top: 5px;
+  margin-bottom: -5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 62px;
+  height: 80px;
 
 }
 

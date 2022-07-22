@@ -20,22 +20,36 @@ export default {
 </script>
 
 <template>
-    <div class = "menu-wrapper">
+<div class = "background">
+  <div class = "menu-wrapper">
         <div class = "menu">
-                
+                <h1>about</h1>
                 <div v-if="states.authkey !== ''">
                   <p>user</p>
                   <div class = "username">username</div>
+                  <h1>logout</h1>                
+                </div>
+                <div v-else>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
                 </div>
                 
-                <h1>logout</h1>
-                <h1>about</h1>
             
         </div>
     </div>
+</div>
+    
 </template>
 
 <style scoped>
+
+.background {
+  margin-top: 30px;
+  background-color: #EABF6C;
+}
 .menu-wrapper{
   position: relative;
   width: 95%;
