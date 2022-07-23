@@ -80,9 +80,7 @@ h2:hover {
     color: #DC6161;
 }
 
-h2:active {
-    text-shadow: 1px 1px 2px black;
-}
+
 
 .heart {
   position: absolute;

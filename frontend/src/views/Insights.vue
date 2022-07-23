@@ -2,9 +2,13 @@
 
 import { states } from '../states/state'
 import Insightsmenu from '../components/Insightsmenu.vue'
+import ReturnMenu from '../components/ReturnMenu.vue'
 
 
 export default {
+
+
+
     data() {
 
         return {
@@ -13,7 +17,7 @@ export default {
     },
     props: {menu: String},
     methods: {},
-    components: { Insightsmenu }
+    components: { Insightsmenu, ReturnMenu }
 }
 </script>
 
@@ -21,14 +25,16 @@ export default {
 <template>
   <div class = "insightswrapper" v-if="!states.burgerIsActivated">
 
-    <Insightsmenu v-if="menu == 'true' ||  menu == null" @topartists="menu = 'topartists'" @topsongs="menu = 'topsongs'" @recentlyplayed="menu = 'recentlyheard'"></Insightsmenu>
+    <Insightsmenu v-if="menu == 'true' ||  menu == null" @topartists="menu = 'top artists'" @topsongs="menu = 'top songs'" @recentlyplayed="menu = 'recently played'"></Insightsmenu>
 
-    <div v-if="menu == 'topartists' || menu == 'topsongs'">
-      <h1>{{menu}}</h1>
+    <div v-if="menu == 'top artists' || menu == 'top songs'">
+      <ReturnMenu :heading="menu" @back="menu='true'"></ReturnMenu>
+      
     </div>
 
-    <div v-if="menu == 'recentlyheard'">
-      <h1>{{menu}}</h1>
+    <div v-if="menu == 'recently played'">
+    <ReturnMenu :heading="menu" @back="menu='true'"></ReturnMenu>
+      
     </div>
   
   </div> 

@@ -5,6 +5,7 @@ import Navigationbar from './components/NavBar.vue'
 import { states } from './states/state'
 import Menu from './views/Menu.vue';
 import Landingpage from './views/Landingpage.vue';
+import ArtistCard from './components/ArtistCard.vue';
 
 
 </script>
@@ -26,6 +27,7 @@ export default {
    
   }
 }
+
 </script>
 
 
