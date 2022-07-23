@@ -23,12 +23,12 @@ export default {
 <div class = "background">
   <div class = "menu-wrapper">
         <div class = "menu">
-                <h1>about</h1>
-                <div v-if="states.authkey !== ''">
+                <div v-if="states.authkey == ''">
                   <p>user</p>
                   <div class = "username">username</div>
                   <h1>logout</h1>                
                 </div>
+                
                 <div v-else>
                   <br/>
                   <br/>
@@ -36,6 +36,7 @@ export default {
                   <br/>
                   <br/>
                 </div>
+                <h1>about</h1>
                 
             
         </div>
@@ -47,7 +48,9 @@ export default {
 <style scoped>
 
 .background {
-  margin-top: 30px;
+  margin: 0;
+  padding-top: 10%;
+  padding-bottom: 10%;
   background-color: #EABF6C;
 }
 .menu-wrapper{
@@ -65,6 +68,7 @@ export default {
 
 h1 {
   cursor: pointer;
+  width: 95%;
 }
 
 h1:hover {
@@ -91,4 +95,21 @@ h1:active {
 p {
     margin-bottom: 0;
 }
+
+
+@media screen and (max-width:720px){
+
+
+.username {
+  margin-top: 0;
+  font-size: 2.7em;
+  line-height: auto;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+}
+
+
+
 </style>

@@ -17,7 +17,7 @@ import Landingpage from './pages/Landingpage.vue';
   </header>
 
   <main>
-    <Landingpage class="landing"></Landingpage>
+    <Landingpage  class="landing"></Landingpage>
     <Menu class="menu" v-if="states.burgerIsActivated" style=""></Menu>
   
   </main>
@@ -34,6 +34,7 @@ import Landingpage from './pages/Landingpage.vue';
 
 <style scoped>
 
+
 header{
   display: flex;
   justify-content:space-around;
@@ -49,9 +50,13 @@ header{
 
 .landing {
 position:absolute;
+left: 0;
 z-index: 1;
-}
 
+@media screen and (max-width:720px){
+  left: 0%;
+}
+}
 .menu {
   position:relative;
   z-index: 2;
