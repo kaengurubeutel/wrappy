@@ -27,7 +27,8 @@ export default {
         data: {}
       }).then((response) => {
         console.log(response.data);
-        username = response.data.spotifydata.display_name
+        username = response.data.spotifydata.display_name;
+        states.username = username;
         refreshStorage(response.data.access_token, response.data.expiring_time);
         this.$forceUpdate();
       })
@@ -58,7 +59,7 @@ export default {
         <div class = "menu">
                 <div v-if="states.authkey">
                   <p>user</p>
-                  <div class = "usernamewrapper"><div class = "username">{{username}}</div></div>
+                  <div class = "usernamewrapper"><div class = "username">{{states.username}}</div></div>
                   <h1 @click="logout">logout</h1>                
                 </div>
                 

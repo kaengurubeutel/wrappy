@@ -17,10 +17,8 @@ export default {
 
 
 <template>
-  <div>
-    <h1>{{states.authkey}}</h1>
-    <h1>{{states.expiresAt}}</h1>
-    <h1>{{states.refreshkey}}</h1>
+  <div class = "insightswrapper">
+    
   </div> 
   
 </template>
@@ -28,6 +26,12 @@ export default {
 
 <style scoped>
 
-
+.insightswrapper {
+  position: absolute;
+  left: 2.5%;
+  width:95%;
+  height: 85%;
+  
+}
 
 </style>
