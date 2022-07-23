@@ -42,6 +42,7 @@ export default {
   margin: 0;
 }
 .container{
+ 
   background-color: #EABF6C;
   position:sticky;
   width: 95%;

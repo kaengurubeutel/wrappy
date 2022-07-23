@@ -2,9 +2,12 @@
 
 import { states } from '../states/state'
 
-
 export default {
   data() {
+    if(localStorage.getItem("access_token") != null){
+      this.$router.push('/insights');
+    }
+
     return {
       states
     }
@@ -29,7 +32,7 @@ export default {
      
       <div class = "signinwrapper">
           <h1>let's find out what your favourite music is!</h1>
-          <a><div class="signinbox">sign in</div></a>    
+          <a href="http://127.0.0.1:5000/api/spotify/auth/login/"><div class="signinbox">sign in</div></a>    
       </div>
     </div>
   </div>
@@ -95,7 +98,7 @@ h1 {
   position: absolute;
   z-index: 1;
   left: 60%;
-  top: 10%;
+  top: 0%;
 }
 
 .f1 {

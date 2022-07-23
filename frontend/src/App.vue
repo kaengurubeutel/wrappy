@@ -3,10 +3,30 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Navigationbar from './components/NavBar.vue'
 import { states } from './states/state'
-import Menu from './pages/Menu.vue';
-import Landingpage from './pages/Landingpage.vue';
+import Menu from './views/Menu.vue';
+import Landingpage from './views/Landingpage.vue';
+
+
 </script>
 
+<script>
+export default {
+
+  data() {
+
+     if (localStorage.getItem("access_token") != null){
+         states.authkey = true;
+        }
+
+    return {
+      states
+    }
+  },
+  methods:{
+   
+  }
+}
+</script>
 
 
 <template>
@@ -17,9 +37,8 @@ import Landingpage from './pages/Landingpage.vue';
   </header>
 
   <main>
-    <Landingpage  class="landing"></Landingpage>
+    <router-view  class="router"></router-view>
     <Menu class="menu" v-if="states.burgerIsActivated" style=""></Menu>
-  
   </main>
   
   <footer>
@@ -48,7 +67,7 @@ header{
   background-color: #EABF6C;
 }
 
-.landing {
+.router {
 position:absolute;
 left: 0;
 z-index: 1;

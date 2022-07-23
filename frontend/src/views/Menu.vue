@@ -1,19 +1,52 @@
 <script>
-import {axios} from 'axios';
+import axios from "axios";
 import { states } from '../states/state'
 
 
 //@TODO add axios to profile
 //@TODO add links to about and add logout
+let refreshStorage = (access_token, expiring_time) => {
+  localStorage.setItem("access_token" , access_token);
+  localStorage.setItem("expiring_time" , expiring_time);
+}
 
+let username = "";
 
 export default {
   data() {
+
+    if(states.authkey){
+      axios({
+        method: 'get',
+        url: "http://127.0.0.1:5000/api/spotify/user-data/profile",
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+          refresh_token: localStorage.getItem("refresh_token"),
+          expiring_time: localStorage.getItem("expiring_time"),
+        },
+        data: {}
+      }).then((response) => {
+        console.log(response.data);
+        username = response.data.spotifydata.display_name
+        refreshStorage(response.data.access_token, response.data.expiring_time);
+        this.$forceUpdate();
+      })
+    }
+
     return {
+      username,
       states
     }
   },
   methods:{
+    logout(){
+      localStorage.clear();
+      states.authkey = false;
+      username = "";
+      this.$router.push('/');
+      states.burgerIsActivated = false;
+
+    }
   }
 }
 
@@ -23,10 +56,10 @@ export default {
 <div class = "background">
   <div class = "menu-wrapper">
         <div class = "menu">
-                <div v-if="states.authkey == ''">
+                <div v-if="states.authkey">
                   <p>user</p>
-                  <div class = "username">username</div>
-                  <h1>logout</h1>                
+                  <div class = "username">{{username}}</div>
+                  <h1 @click="logout">logout</h1>                
                 </div>
                 
                 <div v-else>
@@ -36,9 +69,7 @@ export default {
                   <br/>
                   <br/>
                 </div>
-                <h1>about</h1>
                 
-            
         </div>
     </div>
 </div>
@@ -47,6 +78,14 @@ export default {
 
 <style scoped>
 
+.menu {
+  -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none;
+}
 .background {
   margin: 0;
   padding-top: 10%;

@@ -3,8 +3,6 @@ import {
 } from 'vue'
 
 export const states = reactive({
-    authkey: "",
-    refreshkey: "",
-    expiresAt: "",
+    authkey: false,
     burgerIsActivated: false,
 })
