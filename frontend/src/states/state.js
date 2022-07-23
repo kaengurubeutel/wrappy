@@ -5,5 +5,5 @@ import {
 export const states = reactive({
     authkey: false,
     burgerIsActivated: false,
-    username: "",
+    username: "" // for bugfixing, could be more elegant? 
 })

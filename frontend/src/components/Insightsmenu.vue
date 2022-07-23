@@ -11,7 +11,16 @@ export default {
     }
   },
   methods:{
-  
+    topartists(){
+      this.$emit('topartists');
+    },
+    topsongs(){
+      this.$emit('topsongs');
+    },
+    recentlyplayed(){
+      this.$emit('recentlyplayed');
+    }
+
   }
 }
 </script>
@@ -23,9 +32,9 @@ export default {
 
     <div class = "menu">
         <h1 class = "Heading">your<br/>insights</h1>
-        <h2>top artists</h2>
-        <h2>top songs</h2>
-        <h2>recently played</h2>
+        <h2 @click="topartists">top artists</h2>
+        <h2 @click="topsongs">top songs</h2>
+        <h2 @click="recentlyplayed">recently played</h2>
     </div>
 
     <div class = "hearts"> 

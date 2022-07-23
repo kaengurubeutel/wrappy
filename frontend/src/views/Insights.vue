@@ -6,10 +6,12 @@ import Insightsmenu from '../components/Insightsmenu.vue'
 
 export default {
     data() {
+
         return {
             states
         };
     },
+    props: {menu: String},
     methods: {},
     components: { Insightsmenu }
 }
@@ -18,7 +20,17 @@ export default {
 
 <template>
   <div class = "insightswrapper" v-if="!states.burgerIsActivated">
-    <Insightsmenu></Insightsmenu>
+
+    <Insightsmenu v-if="menu == 'true' ||  menu == null" @topartists="menu = 'topartists'" @topsongs="menu = 'topsongs'" @recentlyplayed="menu = 'recentlyheard'"></Insightsmenu>
+
+    <div v-if="menu == 'topartists' || menu == 'topsongs'">
+      <h1>{{menu}}</h1>
+    </div>
+
+    <div v-if="menu == 'recentlyheard'">
+      <h1>{{menu}}</h1>
+    </div>
+  
   </div> 
   
 </template>
