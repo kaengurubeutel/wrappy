@@ -58,7 +58,7 @@ export default {
         <div class = "menu">
                 <div v-if="states.authkey">
                   <p>user</p>
-                  <div class = "username">{{username}}</div>
+                  <div class = "usernamewrapper"><div class = "username">{{username}}</div></div>
                   <h1 @click="logout">logout</h1>                
                 </div>
                 
@@ -122,13 +122,57 @@ h1:active {
     text-shadow: 1px 1px 2px black;
 }
 
-.username {
-  margin-top: 0;
-  font-size: 2.7em;
-  line-height: auto;
-  font-weight: 600;
+.usernamewrapper{
+  width: 100%;
+  overflow: hidden;
 }
 
+.username {
+  background-color:#DC6161;
+  margin-top: 0;
+  height: 4rem;
+  font-size: 2.7em;
+  line-height: 4rem;
+  font-weight: 600;
+   
+    text-align: right;
+
+  /**Source https://blog.hubspot.com/website/scrolling-text-css */
+
+  /* animation properties */
+  -moz-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 15s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from { -moz-transform: translateX(-100%); }
+  to { -moz-transform: translateX(100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateX(-100%); }
+  to { -webkit-transform: translateX(100%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  to {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
 
 
 p {
@@ -140,11 +184,7 @@ p {
 
 
 .username {
-  margin-top: 0;
-  font-size: 2.7em;
-  line-height: auto;
-  font-size: 50px;
-  font-weight: 600;
+  font-size: 2em;
 }
 
 }

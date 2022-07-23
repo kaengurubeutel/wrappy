@@ -23,11 +23,11 @@ export default {
   <div v-if="!states.burgerIsActivated"  class = "landing">
     <div class="landingwrapper">
       <div class = "tvwrapper">
-        <img class = "f1" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
-        <img class = "f2" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
-        <img class = "f3" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
-        <img class = "f4" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
-        <img class = "f5" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
+        <img class = "f1 tv" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
+        <img class = "f2 tv" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
+        <img class = "f3 tv" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
+        <img class = "f4 tv" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
+        <img class = "f5 tv" src="../assets/Fernseher_y1yztk_c_scale,w_924.png">
       </div>
      
       <div class = "signinwrapper">
@@ -146,8 +146,17 @@ h1 {
   position:relative;
   left: -150px;
   top: -60px;
+ 
 }
 
+.tv {
+ transform-origin: 50% 50%;
+  transition: transform 0.1s ease-in-out;
+}
+
+.tv:hover {
+  transform: rotate(20deg);
+}
 
 @media screen and (max-width:720px){
 
