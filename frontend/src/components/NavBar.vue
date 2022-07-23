@@ -41,6 +41,11 @@ export default {
   padding: 0;
   margin: 0;
 }
+
+h1 {
+  font-weight: 800;
+}
+
 .container{
  
   background-color: #EABF6C;

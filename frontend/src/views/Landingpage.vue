@@ -84,7 +84,7 @@ img {
 h1 {
   width: 15rem;
   padding: 0.25rem;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 25px;
   background: #8B79F7;
   border: 3px solid #000000;

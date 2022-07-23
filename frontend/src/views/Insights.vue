@@ -1,24 +1,24 @@
 <script>
 
 import { states } from '../states/state'
+import Insightsmenu from '../components/Insightsmenu.vue'
 
 
 export default {
-  data() {
-    return {
-      states
-    }
-  },
-  methods:{
-   
-  }
+    data() {
+        return {
+            states
+        };
+    },
+    methods: {},
+    components: { Insightsmenu }
 }
 </script>
 
 
 <template>
-  <div class = "insightswrapper">
-    
+  <div class = "insightswrapper" v-if="!states.burgerIsActivated">
+    <Insightsmenu></Insightsmenu>
   </div> 
   
 </template>
