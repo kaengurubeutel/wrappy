@@ -5,7 +5,9 @@ import Navigationbar from './components/NavBar.vue'
 import { states } from './states/state'
 import Menu from './views/Menu.vue';
 import Landingpage from './views/Landingpage.vue';
-import ArtistCard from './components/ArtistCard.vue';
+import Carousel from './components/Carousel.vue';
+
+
 
 
 </script>
@@ -26,27 +28,28 @@ export default {
   methods:{
    
   }
+  
 }
 
 </script>
 
 
 <template>
-<div class=" wrapper">
-<header>
-      <Navigationbar class="navbar" ref="navbar"/>
-      
-  </header>
+  <div class=" wrapper">
+    <header>
+      <Navigationbar class="navbar" ref="navbar" />
 
-  <main>
-    <router-view  class="router"></router-view>
-    <Menu class="menu" v-if="states.burgerIsActivated" style=""></Menu>
-  </main>
-  
-  <footer>
+    </header>
 
-  </footer>
-</div>
+    <main>
+      <Menu class="menu" v-if="states.burgerIsActivated" style=""></Menu>
+      <router-view class="router"></router-view>
+    </main>
+
+    <footer>
+
+    </footer>
+  </div>
 </template>
 
 

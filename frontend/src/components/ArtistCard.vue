@@ -68,8 +68,8 @@ line-height: 0px;
 margin:0;
 padding:0;
 position:relative;
-left: 100px;
-top: 30px;
+left: 120px;
+top: 50px;
 color: #1E1E1E;
 
 transform: rotate(-90deg);
@@ -113,9 +113,7 @@ img {
 
 width: 420px;
 height: 420px;
-
-background: url(ab6761610000e5eb7714bb4d6a7b50a00f83195d.jpg);
-border: 7px solid #000000;
+border: 7px solid #1E1E1E;
 border-radius: 4px;
 
 /* Inside auto layout */
