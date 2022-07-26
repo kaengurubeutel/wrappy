@@ -107,7 +107,7 @@ router.get("/tracks", (req, res) => {
     request.get(createAuthOptions(res.locals.token,"top/tracks?"
         + querystring.stringify({
             time_range: time,
-            limit: 10,
+            limit: 50,
         })),
         (error, response, body) => {
             if (!error && response.statusCode === 200) {

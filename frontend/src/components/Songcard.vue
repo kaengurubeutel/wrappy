@@ -24,24 +24,25 @@ export default {
 
 
 <template>
-<div class = "container">
+  <div class="container">
 
-  <h1 class="top">top {{number}}</h1>
+    <h1 class="top">top {{number}}</h1>
 
-  <div class = "picture-title-container">
-    <img src = {{img}} alt="artistcover"/>
-    <h1 class = "name">{{name}}</h1>
-    <div class="artists">{{artist}}</div>
-    <div class ="album">{{album}}</div>
+    <div class="picture-title-container">
+      <img v-bind:src="img" alt="artistcover" />
+      <h1 class="name">{{name}}</h1>
+      <div class="artists">{{artist}}</div>
+      <div class="album">{{album}}</div>
+    </div>
+
   </div>
 
-</div>
- 
- 
+
 </template>
 
 
 <style scoped>
+
 .artists{
   font-weight: 400;
 }
@@ -51,7 +52,7 @@ export default {
 flex-direction: row;
 align-items: flex-start;
 padding: 0px;
-position: absolute;
+
 width: 501px;
 height: 519px;
 
@@ -66,33 +67,33 @@ gap: 5px;
 }
 
 .top {
-width: 239px;
-height: 81px;
 
-font-family: 'Space Grotesk';
-font-style: normal;
-font-weight: 700;
-font-size: 64px;
-line-height: 0px;
-margin:0;
-padding:0;
-position:relative;
-left: 120px;
-top: 50px;
-color: #1E1E1E;
 
-transform: rotate(-90deg);
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 0px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: -150px;
+  top: 120px;
 
-/* Inside auto layout */
+  color: #1E1E1E;
 
-flex: none;
-order: 0;
-flex-grow: 0;
+  transform: rotate(-90deg);
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .name {
   width: 422px;
-height: 120px;
+
 
 /* H2 */
 

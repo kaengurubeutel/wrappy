@@ -22,30 +22,34 @@ export default {
 
 
 <template>
-<div class = "container">
+  <div class="container">
 
-  <h1 class="top">top {{number}}</h1>
+    <h1 class="top">top {{number}}</h1>
 
-  <div class = "picture-title-container">
-    <img src = {{img}} alt="artistcover"/>
-    <h1 class = "name">{{name}}</h1>
+    <div class="picture-title-container">
+      <img v-bind:src="img" alt="artistcover" />
+      <h1 class="name">{{name}}</h1>
+    </div>
+
   </div>
 
-</div>
- 
- 
+
 </template>
 
 
 <style scoped>
+
+
+* body {
+  margin:0;
+  padding:0;
+}
 .container {
   display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 0px;
-position: absolute;
-width: 501px;
-height: 519px;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  margin:0;
 }
 
 .picture-title-container {
@@ -53,12 +57,11 @@ height: 519px;
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
-  gap: 5px;
+  margin:0;
+  gap:5px;
 }
 
 .top {
-width: 239px;
-height: 81px;
 
 font-family: 'Space Grotesk';
 font-style: normal;
@@ -67,9 +70,10 @@ font-size: 64px;
 line-height: 0px;
 margin:0;
 padding:0;
-position:relative;
-left: 120px;
-top: 50px;
+position:absolute;
+left: -150px;
+  top: 120px;
+
 color: #1E1E1E;
 
 transform: rotate(-90deg);
@@ -82,25 +86,18 @@ flex-grow: 0;
 }
 
 .name {
-  width: 420px;
-height: 79px;
-
-/* H1 */
-
-font-family: 'Space Grotesk';
-font-style: normal;
-font-weight: 700;
-font-size: 60px;
-line-height: 70px;
-text-align: center;
-color: #1E1E1E;
-
-
-/* Inside auto layout */
-
-flex: none;
-order: 1;
-flex-grow: 0;
+        width: 420px;
+        height: 79px;
+        font-family: 'Space Grotesk';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 60px;
+        line-height: 70px;
+        text-align: center;
+        color: #1E1E1E;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
 }
 
 h1 {

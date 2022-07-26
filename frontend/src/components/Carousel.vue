@@ -1,81 +1,108 @@
 <script>
 
 import { states } from '../states/state'
-import axios from "axios";
+import ArtistCard from './ArtistCard.vue';
+import Songcard from './Songcard.vue';
 
-let refreshStorage = (access_token, expiring_time) => {
-  localStorage.setItem("access_token", access_token);
-  localStorage.setItem("expiring_time", expiring_time);
-}
+
+
 
 export default {
 
-  data() {
-    return {
-      states
-    }
-  },
-  props: {
-    artists: [
-       
-
-
-    ]
-  },
-  methods: {
-    gettracks() {
-      axios({
-        method: 'get',
-        url: "http://127.0.0.1:5000/api/spotify/user-data/tracks",
-        headers: {
-          access_token: localStorage.getItem("access_token"),
-          refresh_token: localStorage.getItem("refresh_token"),
-          expiring_time: localStorage.getItem("expiring_time"),
-          time_range: "short_term" //todo multiple buttons for different time ranges
-        },
-        data: {}
-      }).then((response) => {
-        console.log(response.data.spotifydata.items);
-        // notwendig für refresh
-        refreshStorage(response.data.access_token, response.data.expiring_time);
-        //fixed
-
-      })
-
+    data() {
+        return {
+            states,
+            index: 0,
+            slideDirection: "",
+            slides: [],
+        };
     },
-    /* @param time_range --> short_term || medium_term || long_term*/
-    topartists() {
-      console.log("hallo")
-      axios({
-        method: 'get',
-        url: "http://127.0.0.1:5000/api/spotify/user-data/artists",
-        headers: {
-          access_token: localStorage.getItem("access_token"),
-          refresh_token: localStorage.getItem("refresh_token"),
-          expiring_time: localStorage.getItem("expiring_time"),
-          time_range: "short_term" //todo multiple buttons for different time ranges
-        },
-        data: {}
-      }).then((response) => {
-
-        console.log(response.data.spotifydata.items);
-        refreshStorage(response.data.access_token, response.data.expiring_time);
-
-      })
+    props: { carouselstate: String, carouseldata: Array },
+    computed: {
+      slidesLength() {
+        return this.carouseldata.length;
+      }
     },
-
-  }
+    mounted() {},
+    methods: {},
+    watch: {
+        carouseldata(newdata, olddata) {
+            console.log("hallo");
+        }
+    },
+    components: { ArtistCard, Songcard }
 }
+
+//<ArtistCard v-for="(item, index) in carouseldata" :name="item.name" :number="index+1" :img="item.images[0].url"
+         // : key = "(index)" class="slide" />
+
+/**
+ *  <Songcard v-for="(item, index) in carouseldata" :name="item.name" :number="index+1" :album="item.album.name"
+          :artist="item.artists[0].name" :img="item.album.images[0].url" :key="(index)" class="slide" />
+      
+ */
+
 </script>
 
 
 <template>
+  <div class=wrapper>
 
-  <h1 @click="topartists">Artists</h1>
-  <h1 @click="gettracks">songs</h1>
+    <div class="carousel" @keydown="checkSlide($event)" tabindex="0" >
+      <div v-if="this.carouselstate === 'artists' && this.carouseldata.length > 0" class="artists">
+
+
+
+      </div>
+      
+
+      
+      <div v-if="this.carouselstate === 'songs' && this.carouseldata.length > 0" class="songs">
+      
+      
+
+      </div>
+
+    </div>
+
+
+    <div class = "menuwrapper">
+      <div class="menu">
+        <img src="../assets/button.png" alt="leftbutton" class="prev" />
+        <img src="../assets/button.png" alt="rightbutton" class="next" />
+      </div>
+    </div>
+
+
+  </div>
 
 </template>
 
 
 <style scoped>
+
+.next {
+transform: rotate(180deg);
+}
+
+img {
+  width:80px;
+  height: auto;
+  filter: drop-shadow(-2px -2px 4px rgb(0 0 0 / 0.38));
+  cursor: pointer;
+}
+
+img:active {
+  filter: drop-shadow(-2px -2px 4px rgb(0 0 0 / 0));
+}
+
+
+.slide {
+  transform: scale(60%);
+  width: 500px;
+}
+
+
+
+
 </style>
