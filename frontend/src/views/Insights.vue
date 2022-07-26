@@ -58,6 +58,7 @@ export default {
         },
         data: {}
       }).then((response) => {
+
         refreshStorage(response.data.access_token, response.data.expiring_time);
         this.artists = response.data.spotifydata.items;
       })

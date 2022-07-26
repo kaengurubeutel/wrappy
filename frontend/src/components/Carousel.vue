@@ -8,49 +8,49 @@ import Songcard from './Songcard.vue';
 
 export default {
 
-    data() {
-        return {
-            states,
-            index: 0,
-            slideDirection: "",
-            slides: [],
-        };
-    },
-    props: { carouselstate: String, carouseldata: Array },
-    mounted() {
-      
-    },
-    computed: {
-
-      slidesLength() {
-        return this.carouseldata.length;
-      }
-    },
-  mounted() {
-   
+  data() {
+    return {
+      states,
+      index: 0,
+      slideDirection: "",
+      slides: [],
+    };
   },
-   methods: {
+  props: { carouselstate: String, carouseldata: Array },
+  mounted() {
 
-      next(){
-        this.index = (this.index+1)%this.carouseldata.length;
-       this.slideDirection = 'slide-right';
-      },
+  },
+  computed: {
 
-      back(){
-        this.index--;
-        if (this.index < 0){
-          this.index=this.carouseldata.length-1;
-        }
-        this.slideDirection = 'slide-left';
-        }
-      },
+    slidesLength() {
+      return this.carouseldata.length;
+    }
+  },
+  mounted() {
 
-    watch: {
-        carouseldata(newdata, olddata) {
-            console.log(newdata);
-        }
+  },
+  methods: {
+
+    next() {
+      this.index = (this.index + 1) % this.carouseldata.length;
+      this.slideDirection = 'slide-right';
     },
-    components: { ArtistCard, Songcard, CarouselSlide }
+
+    back() {
+      this.index--;
+      if (this.index < 0) {
+        this.index = this.carouseldata.length - 1;
+      }
+      this.slideDirection = 'slide-left';
+    }
+  },
+
+  watch: {
+    carouseldata(newdata, olddata) {
+      console.log(newdata);
+    }
+  },
+  components: { ArtistCard, Songcard, CarouselSlide }
 }
 
 //<ArtistCard v-for="(item, index) in carouseldata" :name="item.name" :number="index+1" :img="item.images[0].url"
@@ -68,21 +68,22 @@ export default {
 <template>
   <div class=wrapper>
 
-    <div class="carousel" @keydown="checkSlide($event)" tabindex="0">
+    <div  @keydown="checkSlide($event)" tabindex="0">
+
       <div v-if="this.carouselstate === 'artists' && this.carouseldata.length > 0" class="artists">
-        <carousel-slide v-for="(item, index) in carouseldata" :key="index" :number="index">
-          <div v-if="index-1 < 0">
-            <ArtistCard :name="carouseldata[carouseldata.length-1].name" :number="carouseldata.length"
+        <carousel-slide class="carousel" v-for="(item, index) in carouseldata" :key="index" :number="index">
+          <div v-if="index - 1 < 0">
+            <ArtistCard :name="carouseldata[carouseldata.length - 1].name" :number="carouseldata.length"
               :img="carouseldata[carouseldata.length - 1].images[0].url" class="slide" />
           </div>
           <div v-else>
-            <ArtistCard :name="carouseldata[index-1].name" :number="index" :img="carouseldata[index - 1].images[0].url"
-              class="slide" />
+            <ArtistCard :name="carouseldata[index - 1].name" :number="index"
+              :img="carouseldata[index - 1].images[0].url" class="slide" />
           </div>
 
-          <ArtistCard :name="item.name" :number="index+1" :img="item.images[0].url" class="slide" />
+          <ArtistCard :name="item.name" :number="index + 1" :img="item.images[0].url" class="slide" />
           <ArtistCard :name="carouseldata[((index + 1) % carouseldata.length)].name"
-            :number="((index+1)%carouseldata.length)+1"
+            :number="((index + 1) % carouseldata.length) + 1"
             :img="carouseldata[((index + 1) % carouseldata.length)].images[0].url" class="slide" />
 
         </carousel-slide>
@@ -96,12 +97,12 @@ export default {
       <div v-if="this.carouselstate === 'songs' && this.carouseldata.length > 0" class="songs">
 
         <carousel-slide class="carousel" v-for="(item, index) in carouseldata" :key="index" :number="index">
-          <div v-if="index-1 < 0">
+          <div v-if="index - 1 < 0">
 
             <Songcard :name="carouseldata[carouseldata.length - 1].name" :number="carouseldata.length"
-              :album="carouseldata[carouseldata.length-1].album.name"
-              :artist="carouseldata[carouseldata.length-1].artists[0].name"
-              :img="carouseldata[carouseldata.length-1].album.images[0].url" class="slide" />
+              :album="carouseldata[carouseldata.length - 1].album.name"
+              :artist="carouseldata[carouseldata.length - 1].artists[0].name"
+              :img="carouseldata[carouseldata.length - 1].album.images[0].url" class="slide" />
 
           </div>
           <div v-else>
@@ -113,12 +114,12 @@ export default {
           </div>
 
 
-          <Songcard :name="item.name" :number="index+1" :album="item.album.name" :artist="item.artists[0].name"
+          <Songcard :name="item.name" :number="index + 1" :album="item.album.name" :artist="item.artists[0].name"
             :img="item.album.images[0].url" class="slide" />
 
 
           <Songcard :name="carouseldata[((index + 1) % carouseldata.length)].name"
-            :number="((index+1)%carouseldata.length)+1"
+            :number="((index + 1) % carouseldata.length) + 1"
             :album="carouseldata[((index + 1) % carouseldata.length)].album.name"
             :artist="carouseldata[((index + 1) % carouseldata.length)].artists[0].name"
             :img="carouseldata[((index + 1) % carouseldata.length)].album.images[0].url" class="slide" />
@@ -129,8 +130,9 @@ export default {
 
       </div>
 
-      <div class="blend1"></div>
-      <div class="blend2"></div>
+
+      <div class="blend1 blend"></div>
+      <div class="blend2 blend"></div>
 
     </div>
 
@@ -150,12 +152,35 @@ export default {
 
 <style scoped>
 
+
+
+
 .next {
-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.blend{
+  width: 441px;
+  height: 450px;
+
+  background: linear-gradient(91.21deg, #EABF6C 0.98%, rgba(234, 191, 108, 0.95) 73.18%, rgba(234, 191, 108, 0.4) 98.92%, rgba(234, 191, 108, 0) 98.93%);}
+.blend1{
+  width:30%;
+  position:absolute;
+  top:50px;
+  left: -10%;
+}
+
+.blend2 {
+    width: 30%;
+    position: absolute;
+    top: 30px;
+    transform: rotate(180deg);
+    right:-10%;
 }
 
 img {
-  width:80px;
+  width: 80px;
   height: auto;
   filter: drop-shadow(-2px -2px 4px rgb(0 0 0 / 0.38));
   cursor: pointer;
@@ -167,39 +192,41 @@ img:active {
 
 
 .slide {
-  transform: scale(75%);
+  transform: scale(60%);
   width: 500px;
 }
 
-.menu{
-display: flex;
-flex-direction: row;
-gap: 300px;
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 300px;
+  transform: scale(80%)
 }
 
-.menuwrapper{
+.menuwrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  left: -40px;
-  top: 600px;
+  top: 500px;
 
 }
 
-.wrapper{
-  transform: scale(110%)
+.wrapper {
+  transform: scale(100%);
+  position: relative;
+  z-index: 0;
+  top: -60px;
 }
 
 .carousel {
-  display:flex;
+  display: flex;
   flex-direction: row;
-  width:80%;
-  height:600px;
-  position:absolute;
-  left: 10%;
-  overflow:hidden;
+  width: 97.5%;
+  height: 600px;
+  position: absolute;
+  left: 5%;
+  overflow: hidden;
   justify-content: space-between;
 }
-
 </style>

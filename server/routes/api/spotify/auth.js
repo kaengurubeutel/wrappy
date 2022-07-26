@@ -128,7 +128,7 @@ router.get("/callback", function (req, res) {
         access_token = body.access_token; // getting data from response
         refresh_token = body.refresh_token;
         expiring_time = new Date().getTime() + 3600000;
-        res.redirect('http://localhost:5173/callback');
+        res.redirect('http://localhost:4000/callback');
       } else {
         // error message
         res.send(
