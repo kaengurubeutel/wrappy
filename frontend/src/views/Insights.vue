@@ -58,7 +58,6 @@ export default {
         },
         data: {}
       }).then((response) => {
-        console.log(response.data.spotifydata.items);
         refreshStorage(response.data.access_token, response.data.expiring_time);
         this.artists = response.data.spotifydata.items;
       })
@@ -75,9 +74,7 @@ export default {
         },
         data: {}
       }).then((response) => {
-        //console.log(response.data);
         refreshStorage(response.data.access_token, response.data.expiring_time);
-        console.log(response.data.spotifydata.items);
         this.recentlyHeard = response.data.spotifydata.items;
 
       })

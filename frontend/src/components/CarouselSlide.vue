@@ -10,12 +10,17 @@
 export default {
     data() {
         return {
-            index: 0,
+            index: this.num,
         }
     },
+    props:{number:Number
+    
+    },
     computed: {
-        visible() {
-            return this.index === this.$parent.index;
+       
+       visible() {
+            console.log(this.number)
+            return this.number === this.$parent.index;
         },
         dir() {
             console.log(this.$parent.slideDirection)
@@ -27,11 +32,11 @@ export default {
 
 <style scoped>
 .slide-left-enter-active {
-    animation: slide-left-in 0.5s ease-in;
+    animation: slide-left-in 0.9s ease-in-out;
 }
 
 .slide-left-leave-active {
-    animation: slide-left-out 0.5s ease-in;
+    animation: slide-left-out 0.9s ease-in-out;
 }
 
 @keyframes slide-left-in {
@@ -55,11 +60,11 @@ export default {
 }
 
 .slide-right-enter-active {
-    animation: slide-right-in 0.5s ease-in;
+    animation: slide-right-in 0.9s ease-in-out;
 }
 
 .slide-right-leave-active {
-    animation: slide-right-out 0.5s ease-in;
+    animation: slide-right-out 0.9s ease-in-out;
 }
 
 @keyframes slide-right-out {
