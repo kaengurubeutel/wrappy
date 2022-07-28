@@ -21,43 +21,29 @@ export default {
 
 <template>
 
- <div class="wrapper">
-  
   <div class="point" @click="back"></div>
-  
-  <h1>{{heading}}</h1>
 
-  <div></div>
- </div>
- 
+  <div class="wrapper">
+
+    <h1>{{heading}}</h1>
+
+    <div></div>
+  </div>
+
 </template>
 
 
 <style scoped>
+
 .wrapper{
   display: flex;
   flex-direction: row;
-  align-items:flex-start;
-  justify-content: space-between;
-  width:60%;
+  align-items:center;
+  justify-content: center;
+  width:100%;
   padding: 0px;
   margin:0;
   
-}
-
-.tail {
-  position:absolute;
-box-sizing: border-box;
-
-width: 51.01px;
-height: 0px;
-
-border: 5px solid #1E1E1E;
-transform: rotate(-180deg);
-
-flex: none;
-order: 0;
-flex-grow: 0;
 }
 
 .point{
@@ -90,5 +76,17 @@ h1 {
 .point:active{
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
 }
+
+@media screen and (max-width:720px) {
+
+  h1{
+    position:relative;
+    top: 10px;
+    font-size: 1.4rem;
+    line-height: 1.4remc;
+  }
+
+}
+
 
 </style>

@@ -113,17 +113,17 @@ export default {
       @topsongs="menu = 'top songs'" @recentlyplayed="menu = 'recently played'"></Insightsmenu>
 
     <div v-if="menu == 'top artists'">
-      <ReturnMenu :heading="this.menu" @back="menu = 'true'"></ReturnMenu>
-      <Carousel :carouselstate="this.carouselState" :carouseldata="this.artists"></Carousel>
+      <ReturnMenu :heading="this.menu" @back="menu = 'true'" class="menu"></ReturnMenu>
+      <Carousel :carouselstate="this.carouselState" :carouseldata="this.artists" class="carousel"></Carousel>
     </div>
 
     <div v-if="menu == 'top songs'">
-      <ReturnMenu :heading="this.menu" @back="menu = 'true'"></ReturnMenu>
-      <Carousel :carouselstate="this.carouselState" :carouseldata="this.tracks"></Carousel>
+      <ReturnMenu :heading="this.menu" @back="menu = 'true'" class="menu"></ReturnMenu>
+      <Carousel :carouselstate="this.carouselState" :carouseldata="this.tracks" class="carousel"></Carousel>
     </div>
 
     <div v-if="menu == 'recently played'">
-      <ReturnMenu :heading="this.menu" @back="menu = 'true'"></ReturnMenu>
+      <ReturnMenu :heading="this.menu" @back="menu = 'true'" class="menu"></ReturnMenu>
 
     </div>
 
@@ -133,6 +133,20 @@ export default {
 
 
 <style scoped>
+
+
+.menu {
+  position:absolute;
+  z-index: 2;
+
+}
+
+.carousel {
+  position: absolute;
+  top: 40px;
+  z-index: 1;
+}
+
 .insightswrapper {
   position: absolute;
   left: 2.5%;
