@@ -76,6 +76,7 @@ export default {
         data: {}
       }).then((response) => {
         refreshStorage(response.data.access_token, response.data.expiring_time);
+        console.log(response.data.spotifydata.items);
         this.recentlyHeard = response.data.spotifydata.items;
 
       })
@@ -97,6 +98,7 @@ export default {
           break;
         case ("recently played"):
           this.recentlyheard();
+          this.carouselState = "recent";
           break;
       }
     }
@@ -124,7 +126,7 @@ export default {
 
     <div v-if="menu == 'recently played'">
       <ReturnMenu :heading="this.menu" @back="menu = 'true'" class="menu"></ReturnMenu>
-
+      <Carousel :carouselstate="this.carouselState" :carouseldata="this.recentlyHeard" class="carousel"></Carousel>
     </div>
 
   </div>

@@ -83,6 +83,51 @@ export default {
 
 
 
+    <div v-if="this.carouselstate === 'recent' && this.carouseldata.length > 0" class="recent">
+
+      <carousel-slide class="carousel" v-for="(item, index) in carouseldata" :key="index" :number="index">
+
+        <div v-if="index - 1 < 0">
+
+          <Songcard :name="carouseldata[carouseldata.length - 1].track.name" :number="carouseldata.length"
+            :album="carouseldata[carouseldata.length - 1].track.album.name"
+            :artist="carouseldata[carouseldata.length - 1].track.artists[0].name"
+            :img="carouseldata[carouseldata.length - 1].track.album.images[0].url" class="slide desktopview" />
+
+        </div>
+        <div v-else>
+
+          <Songcard :name="carouseldata[index - 1].track.name" :number="index"
+            :album="carouseldata[index - 1].track.album.name" :artist="carouseldata[index - 1].track.artists[0].name"
+            :img="carouseldata[index - 1].track.album.images[0].url" class="slide desktopview" />
+
+        </div>
+
+
+
+
+
+        <Songcard :name="item.track.name" :number="index + 1" :album="item.track.album.name"
+          :artist="item.track.artists[0].name" :img="item.track.album.images[0].url" class="slide" />
+
+
+
+
+        <Songcard :name="carouseldata[((index + 1) % carouseldata.length)].track.name"
+          :number="((index + 1) % carouseldata.length) + 1"
+          :album="carouseldata[((index + 1) % carouseldata.length)].track.album.name"
+          :artist="carouseldata[((index + 1) % carouseldata.length)].track.artists[0].name"
+          :img="carouseldata[((index + 1) % carouseldata.length)].track.album.images[0].url"
+          class="slide desktopview" />
+
+
+
+
+      </carousel-slide>
+
+    </div>
+
+
     <div v-if="this.carouselstate === 'songs' && this.carouseldata.length > 0" class="songs">
 
       <carousel-slide class="carousel" v-for="(item, index) in carouseldata" :key="index" :number="index">
@@ -236,7 +281,15 @@ justify-content: space-between;
 @media screen and (max-width:720px) {
 
   .desktopview {
-    background-color: black;
+    display:none;
+  }
+
+  .slide{
+    position: relative;
+    left:-40px;
+  }
+  .blend{
+    display: none;
   }
 
 }
