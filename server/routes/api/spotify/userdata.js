@@ -14,7 +14,7 @@ let expiring_time = "";
 const {
     clientId,
     clientSecret,
-} = require ("../../../helper/credentials");
+} = require ("../../../credentials");
 
 const baseUrl = "https://api.spotify.com/v1/me/";
 
