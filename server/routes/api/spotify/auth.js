@@ -9,7 +9,7 @@ const {
   clientSecret,
   redirectUri,
   stateKey,
-} = require("../../../helper/credentials");
+} = require("../../../credentials");
 
 let access_token = "";
 let refresh_token ="";
